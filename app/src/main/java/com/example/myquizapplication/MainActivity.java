@@ -3,12 +3,14 @@ package com.example.myquizapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -23,16 +25,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button submitBtn;
 
     int score = 0; // total score
-    int currentQuestionIndex = ThreadLocalRandom.current().nextInt(0,76);
+    int currentQuestionIndex = 0;
     int ctr = 0;
 
-    int totalQuestion = 10; // number of questions to be generated in front end (4 questions only)
+    int totalQuestion = 5; // number of questions to be generated in front end (4 questions only)
 
 
     String selectedAnswer = ""; // user selected answer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -56,8 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         submitBtn.setOnClickListener(this);
 
 
-//        totalQuestionsTextView.setText("Total questions : " + totalQuestion);
-
         loadNewQuestion();
 
     }
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(selectedAnswer.equals(QuestionAnswer.correctAnswers[currentQuestionIndex])){
                 score++;
             }
-//            currentQuestionIndex++;
+            currentQuestionIndex++;
             loadNewQuestion();
 
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     void loadNewQuestion(){
-        currentQuestionIndex = ThreadLocalRandom.current().nextInt(0,76); // currentQuestionIndex
+
         Log.d("COUNTER", String.valueOf(ctr)); // print current question counter
 
 
@@ -107,28 +108,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ansB.setText(QuestionAnswer.choices[currentQuestionIndex][1]);
         ansC.setText(QuestionAnswer.choices[currentQuestionIndex][2]);
         ansD.setText(QuestionAnswer.choices[currentQuestionIndex][3]);
-
-
     }
     void finishQuiz(){
-        String passStatus = "";
         if(score > totalQuestion * 0.60){
-            passStatus = "Passed";
+            new AlertDialog.Builder(this)
+                    .setTitle("Congratulations!")
+                    .setMessage("You have passed the assessment. You can now register to our application.\"")
+                    .setPositiveButton("Register",(dialogInterface, i) -> register())
+                    .setCancelable(false)
+                    .show();
         }else{
-            passStatus = "Failed";
+            new AlertDialog.Builder(this)
+                    .setTitle("Sorry...")
+                    .setMessage("You are not allowed to register. For more information, click this.")
+                    .setPositiveButton("I understand", (dialogInterface, i) -> exit())
+                    .setCancelable(true)
+                    .show();
         }
 
-        new AlertDialog.Builder(this)
-                .setTitle(passStatus)
-                .setMessage("Score is " + score+" out of " + totalQuestion)
-                .setPositiveButton("Restart",(dialogInterface, i) -> restartQuiz())
-                .setCancelable(false)
-                .show();
     }
-    void restartQuiz(){
-        ctr = 0;
-        score = 0;
-        currentQuestionIndex = ThreadLocalRandom.current().nextInt(0,76);
-        loadNewQuestion();
+    void register(){
+        // go to registration page
+        Toast.makeText(this, "Register",
+                Toast.LENGTH_LONG).show();
     }
+    void exit(){
+        // exit the app
+        Toast.makeText(this, "Exit",
+                Toast.LENGTH_LONG).show();
+    }
+
 }
