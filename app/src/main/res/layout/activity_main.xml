@@ -61,16 +61,6 @@
             android:text="Ans C"
             android:textColor="@color/black"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ans_D"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
-            android:text="Ans D"
-            android:textColor="@color/black"/>
-
-
 
     </LinearLayout>
 

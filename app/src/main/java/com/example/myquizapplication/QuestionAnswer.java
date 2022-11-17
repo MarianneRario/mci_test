@@ -2,31 +2,48 @@ package com.example.myquizapplication;
 
 public class QuestionAnswer {
     public static String question[] = {
-            "How old must a person be to considered as a Senior Citizen?", //1
-            "What colors are present in the Philippine flag?", //2
-            "What is the third day in a week?", //3
-            "How many months are there in a year?", //4
-            "What age group do you belong to?" //5
+            "Problems with judgment (e.g.,\n" +
+                    "problems making decisions, bad\n" +
+                    "financial decisions, problems with\n" +
+                    "thinking) ", //1
+            "Less interest in hobbies/activities", //2
+            "Repeats the same things over and\n" +
+                    "over (questions, stories, or\n" +
+                    "statements) \n", //3
+            "Trouble learning how to use a tool,\n" +
+                    "appliance, or gadget (e.g., VCR,\n" +
+                    "computer, microwave, remote control) \n", //4
+            "Forgets correct month or year ", //5
+            "Trouble handling complicated financial\n" +
+                    "affairs (e.g., balancing checkbook,\n" +
+                    "income taxes, paying bills)  ", //6
+            "Trouble remembering appointments ", //7
+            "Daily problems with thinking and/or\n" +
+                    "memory ", //8
 
 
     };
 
     public static String choices[][] = {
-            {"25 years old","30 years old","45 years old","at least 60 years old"}, //1
-            {"Blue, red, yellow, and white","Green, pink, yellow, and white","Yellow and black","Black and white"}, //2
-            {"Monday","Wednesday","Tuesday","Friday"}, //3
-            {"7","11","12","15"}, //4
-            {"25-30","31-40","41-55","60 and above"} //5
-
-
+            {"YES - A change","NO - No change","N/A - Don’t know"}, //1
+            {"YES - A change","NO - No change","N/A - Don’t know"}, //2
+            {"YES - A change","NO - No change","N/A - Don’t know"}, //3
+            {"YES - A change","NO - No change","N/A - Don’t know"}, //4
+            {"YES - A change","NO - No change","N/A - Don’t know"}, //5
+            {"YES - A change","NO - No change","N/A - Don’t know"}, //6
+            {"YES - A change","NO - No change","N/A - Don’t know"}, //7
+            {"YES - A change","NO - No change","N/A - Don’t know"}  //8
     };
 
     public static String correctAnswers[] = {
-            "at least 60 years old", //1
-            "Blue, red, yellow, and white", //2
-            "Wednesday", //3
-            "12",//4
-            "60 and above"//5
+            "YES - A change",
+            "YES - A change",
+            "YES - A change",
+            "YES - A change",
+            "YES - A change",
+            "YES - A change",
+            "YES - A change",
+            "YES - A change",
 
     };
 }
