@@ -27,7 +27,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int score = 0; // total score
     int currentQuestionIndex = 0;
     int ctr = 0;
-
+    String msg = "The Senior’s AD8 range fall to 2 or Higher.\n" +
+            "\n" +
+            "We regret that we are unable to process your registration. The application is designed for older adults with mild cognitive impairment. It is recommended to consult a primary care physician if scoring results indicates potential dementia. \n" +
+            "\n" +
+            "PLEASE NOTE: \n" +
+            "The AD8 diagnostic test cannot diagnose dementing disorders. Nevertheless, the test effectively detects the onset of many common dementias at an early stage of the disease.\n" +
+            "(Validation of AD8-Philippines (AD8-P): A Brief Informant-Based Questionnaire for Dementia Screening in the Philippines)";
     int totalQuestion = 7; // number of questions to be generated in front end
 
 
@@ -115,8 +121,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .show();
         }else{
             new AlertDialog.Builder(this)
-                    .setTitle("Sorry...")
-                    .setMessage("You are not allowed to register. For more information, click this.")
+                    .setTitle("The AD8 score equates to the following: " +
+                            "\n 0 - 1:\tNormal/Mild Cognition Impairment \n2 or Higher: Potential Dementia")
+                    .setMessage(msg)
                     .setPositiveButton("I understand", (dialogInterface, i) -> exit())
                     .setCancelable(true)
                     .show();
